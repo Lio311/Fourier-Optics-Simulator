@@ -4,7 +4,11 @@ import cv2
 from PIL import Image
 
 # --- Page Configuration ---
-st.set_page_config(layout="wide", page_title="Fourier Optics Simulator")
+st.set_page_config(
+    layout="wide",
+    page_title="Fourier Optics Simulator",
+    page_icon="🔬"
+)
 
 st.title("Fourier Optics Simulator: 2D Spatial Filtering")
 st.markdown("This app simulates a 4f optical system. An uploaded image is Fourier transformed (like passing through a lens), "
