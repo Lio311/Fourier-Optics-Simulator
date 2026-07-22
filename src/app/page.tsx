@@ -281,27 +281,27 @@ export default function FourierSimulator() {
   };
 
   return (
-    <div className="relative min-h-screen text-slate-100 p-4 md:p-8 overflow-hidden" dir="rtl" ref={containerRef}>
+    <div className="relative min-h-screen text-foreground p-4 md:p-8 overflow-hidden" dir="rtl" ref={containerRef}>
       <div className="bg-animation"></div>
 
       <div className="container max-w-6xl mx-auto relative z-10 space-y-8">
-        <header className="anim-header flex flex-col md:flex-row justify-between items-center pb-6 border-b border-slate-700/50">
+        <header className="anim-header flex flex-col md:flex-row justify-between items-center pb-6 border-b border-border">
           <div className="flex items-center gap-3">
             <Aperture className="w-10 h-10 text-cyan-400" />
             <div>
               <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-cyan-400">
                 סימולטור אופטיקה - מישור פורייה
               </h1>
-              <p className="text-sm text-slate-400 mt-1">מערכת 4f, התמרות מרחביות וסינון תדרים</p>
+              <p className="text-sm text-muted-foreground mt-1">מערכת 4f, התמרות מרחביות וסינון תדרים</p>
             </div>
           </div>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Controls */}
-          <Card className="anim-card glass-card lg:col-span-1 border-slate-700/50">
+          <Card className="anim-card shadow-lg border lg:col-span-1 border-border">
             <CardHeader>
-              <CardTitle className="text-lg text-white flex items-center gap-2">
+              <CardTitle className="text-lg text-foreground flex items-center gap-2">
                 <Waves className="w-5 h-5 text-purple-400" /> בקרה וסינון
               </CardTitle>
             </CardHeader>
@@ -314,18 +314,18 @@ export default function FourierSimulator() {
                     onChange={handleImageUpload} 
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                   />
-                  <div className="flex items-center justify-center gap-2 bg-slate-800/50 hover:bg-slate-700/50 transition-colors border border-slate-600 rounded-md py-2 text-slate-200 font-medium">
+                  <div className="flex items-center justify-center gap-2 bg-background hover:bg-slate-700/50 transition-colors border border-border rounded-md py-2 text-foreground font-medium">
                     <Upload className="w-4 h-4" /> בחר תמונה מהמחשב
                   </div>
                 </div>
 
               <div className="space-y-3">
-                <label className="text-sm text-slate-200 font-medium">סוג מסנן (Filter)</label>
+                <label className="text-sm text-foreground font-medium">סוג מסנן (Filter)</label>
                 <Select value={filterType} onValueChange={(val) => { if (val) setFilterType(val); }}>
-                  <SelectTrigger className="bg-slate-800/50 border-slate-600">
+                  <SelectTrigger className="bg-background border-border">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="bg-slate-800 border-slate-600 text-slate-200">
+                  <SelectContent className="bg-background border-border text-foreground">
                     <SelectItem value="lowpass">Low-pass (מעביר תדרים נמוכים)</SelectItem>
                     <SelectItem value="highpass">High-pass (מעביר תדרים גבוהים)</SelectItem>
                     <SelectItem value="bandpass">Band-pass (מעביר תדרי ביניים)</SelectItem>
@@ -335,7 +335,7 @@ export default function FourierSimulator() {
 
               <div className="space-y-4">
                 <div className="flex justify-between">
-                  <label className="text-sm text-slate-200 font-medium">רדיוס החיתוך (Cutoff)</label>
+                  <label className="text-sm text-foreground font-medium">רדיוס החיתוך (Cutoff)</label>
                   <span className="text-cyan-400 font-mono text-sm">{radius}px</span>
                 </div>
                 <Slider 
@@ -347,11 +347,11 @@ export default function FourierSimulator() {
                 />
               </div>
 
-              <div className="pt-4 border-t border-slate-700/50 flex flex-col gap-3">
+              <div className="pt-4 border-t border-border flex flex-col gap-3">
                 <Button 
                   onClick={applyFourier} 
                   disabled={isProcessing}
-                  className="w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-white font-semibold"
+                  className="w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-foreground font-semibold"
                 >
                   <Play className="w-4 h-4 ml-2" />
                   {isProcessing ? "מעבד..." : "הפעל התמרה"}
@@ -360,7 +360,7 @@ export default function FourierSimulator() {
                 <Button 
                   variant="outline"
                   onClick={drawDefaultImage} 
-                  className="w-full border-slate-600 text-slate-200 hover:bg-slate-800"
+                  className="w-full border-border text-foreground hover:bg-background"
                 >
                   <RotateCcw className="w-4 h-4 ml-2" />
                   אפס תמונה
@@ -372,11 +372,11 @@ export default function FourierSimulator() {
           {/* Visualizations */}
           <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
             
-            <Card className="anim-card glass-card border-slate-700/50 overflow-hidden flex flex-col">
-              <CardHeader className="bg-slate-900/40 border-b border-slate-700/50 py-3">
-                <CardTitle className="text-sm text-center text-slate-200 font-medium">תמונת מקור (Input)</CardTitle>
+            <Card className="anim-card shadow-lg border border-border overflow-hidden flex flex-col">
+              <CardHeader className="bg-card border-b border-border py-3">
+                <CardTitle className="text-sm text-center text-foreground font-medium">תמונת מקור (Input)</CardTitle>
               </CardHeader>
-              <CardContent className="p-0 flex-1 flex items-center justify-center bg-black/40 min-h-[256px]">
+              <CardContent className="p-0 flex-1 flex items-center justify-center bg-muted min-h-[256px]">
                 <canvas 
                   ref={originalCanvas} 
                   width={imageSize} 
@@ -386,11 +386,11 @@ export default function FourierSimulator() {
               </CardContent>
             </Card>
 
-            <Card className="anim-card glass-card border-slate-700/50 overflow-hidden flex flex-col relative">
-              <CardHeader className="bg-slate-900/40 border-b border-slate-700/50 py-3">
+            <Card className="anim-card shadow-lg border border-border overflow-hidden flex flex-col relative">
+              <CardHeader className="bg-card border-b border-border py-3">
                 <CardTitle className="text-sm text-center text-purple-300 font-medium">מישור פורייה (Frequency)</CardTitle>
               </CardHeader>
-              <CardContent className="p-0 flex-1 flex items-center justify-center bg-black/60 min-h-[256px] relative">
+              <CardContent className="p-0 flex-1 flex items-center justify-center bg-muted/80 min-h-[256px] relative">
                 <canvas 
                   ref={fourierCanvas} 
                   width={imageSize} 
@@ -405,11 +405,11 @@ export default function FourierSimulator() {
               </CardContent>
             </Card>
 
-            <Card className="anim-card glass-card border-slate-700/50 overflow-hidden flex flex-col">
-              <CardHeader className="bg-slate-900/40 border-b border-slate-700/50 py-3">
+            <Card className="anim-card shadow-lg border border-border overflow-hidden flex flex-col">
+              <CardHeader className="bg-card border-b border-border py-3">
                 <CardTitle className="text-sm text-center text-cyan-300 font-medium">תוצאה מסוננת (Output)</CardTitle>
               </CardHeader>
-              <CardContent className="p-0 flex-1 flex items-center justify-center bg-black/40 min-h-[256px]">
+              <CardContent className="p-0 flex-1 flex items-center justify-center bg-muted min-h-[256px]">
                 <canvas 
                   ref={resultCanvas} 
                   width={imageSize} 
@@ -425,4 +425,5 @@ export default function FourierSimulator() {
     </div>
   );
 }
+
 
