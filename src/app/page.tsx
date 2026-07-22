@@ -308,19 +308,19 @@ export default function FourierSimulator() {
             <CardContent className="space-y-6">
               
               <div className="space-y-3">
-                <label className="text-sm text-slate-300 font-medium flex items-center gap-2">
+                <label className="text-sm text-slate-200 font-medium flex items-center gap-2">
                   <Upload className="w-4 h-4" /> טען תמונה
                 </label>
                 <Input 
                   type="file" 
                   accept="image/*" 
                   onChange={handleImageUpload} 
-                  className="bg-slate-800/50 border-slate-600 text-slate-300 cursor-pointer"
+                  className="bg-slate-800/50 border-slate-600 text-slate-200 cursor-pointer"
                 />
               </div>
 
               <div className="space-y-3">
-                <label className="text-sm text-slate-300 font-medium">סוג מסנן (Filter)</label>
+                <label className="text-sm text-slate-200 font-medium">סוג מסנן (Filter)</label>
                 <Select value={filterType} onValueChange={(val) => { if (val) setFilterType(val); }}>
                   <SelectTrigger className="bg-slate-800/50 border-slate-600">
                     <SelectValue />
@@ -335,7 +335,7 @@ export default function FourierSimulator() {
 
               <div className="space-y-4">
                 <div className="flex justify-between">
-                  <label className="text-sm text-slate-300 font-medium">רדיוס החיתוך (Cutoff)</label>
+                  <label className="text-sm text-slate-200 font-medium">רדיוס החיתוך (Cutoff)</label>
                   <span className="text-cyan-400 font-mono text-sm">{radius}px</span>
                 </div>
                 <Slider 
@@ -360,7 +360,7 @@ export default function FourierSimulator() {
                 <Button 
                   variant="outline"
                   onClick={drawDefaultImage} 
-                  className="w-full border-slate-600 text-slate-300 hover:bg-slate-800"
+                  className="w-full border-slate-600 text-slate-200 hover:bg-slate-800"
                 >
                   <RotateCcw className="w-4 h-4 ml-2" />
                   אפס תמונה
@@ -374,7 +374,7 @@ export default function FourierSimulator() {
             
             <Card className="anim-card glass-card border-slate-700/50 overflow-hidden flex flex-col">
               <CardHeader className="bg-slate-900/40 border-b border-slate-700/50 py-3">
-                <CardTitle className="text-sm text-center text-slate-300 font-medium">תמונת מקור (Input)</CardTitle>
+                <CardTitle className="text-sm text-center text-slate-200 font-medium">תמונת מקור (Input)</CardTitle>
               </CardHeader>
               <CardContent className="p-0 flex-1 flex items-center justify-center bg-black/40 min-h-[256px]">
                 <canvas 
@@ -425,3 +425,4 @@ export default function FourierSimulator() {
     </div>
   );
 }
+
