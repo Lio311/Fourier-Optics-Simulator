@@ -307,17 +307,17 @@ export default function FourierSimulator() {
             </CardHeader>
             <CardContent className="space-y-6">
               
-              <div className="space-y-3">
-                <label className="text-sm text-slate-200 font-medium flex items-center gap-2">
-                  <Upload className="w-4 h-4" /> טען תמונה
-                </label>
-                <Input 
-                  type="file" 
-                  accept="image/*" 
-                  onChange={handleImageUpload} 
-                  className="bg-slate-800/50 border-slate-600 text-slate-200 cursor-pointer"
-                />
-              </div>
+                <div className="relative mt-2">
+                  <Input 
+                    type="file" 
+                    accept="image/*" 
+                    onChange={handleImageUpload} 
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                  />
+                  <div className="flex items-center justify-center gap-2 bg-slate-800/50 hover:bg-slate-700/50 transition-colors border border-slate-600 rounded-md py-2 text-slate-200 font-medium">
+                    <Upload className="w-4 h-4" /> בחר תמונה מהמחשב
+                  </div>
+                </div>
 
               <div className="space-y-3">
                 <label className="text-sm text-slate-200 font-medium">סוג מסנן (Filter)</label>
