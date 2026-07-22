@@ -323,7 +323,11 @@ export default function FourierSimulator() {
                 <label className="text-sm text-foreground font-medium">סוג מסנן (Filter)</label>
                 <Select value={filterType} onValueChange={(val) => { if (val) setFilterType(val); }}>
                   <SelectTrigger className="bg-background border-border">
-                    <SelectValue />
+                    <span className="truncate">
+                      {filterType === 'lowpass' ? 'Low-pass (מעביר תדרים נמוכים)' :
+                       filterType === 'highpass' ? 'High-pass (מעביר תדרים גבוהים)' :
+                       filterType === 'bandpass' ? 'Band-pass (מעביר פס תדרים)' : 'בחר'}
+                    </span>
                   </SelectTrigger>
                   <SelectContent className="bg-background border-border text-foreground">
                     <SelectItem value="lowpass">Low-pass (מעביר תדרים נמוכים)</SelectItem>
