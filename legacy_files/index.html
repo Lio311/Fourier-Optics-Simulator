@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סימולטור אופטיקה | Fourier Optics Simulator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-microscope"></i>
+                <h1>סימולטור אופטיקה פורייה</h1>
+            </div>
+            <p class="subtitle">סינון תמונות במישור פורייה - מערכת 4f אופטית</p>
+        </header>
+
+        <div class="main-grid">
+            <aside class="controls glass-card">
+                <h2><i class="fas fa-sliders-h"></i> בקרות</h2>
+
+                <div class="control-group">
+                    <label><i class="fas fa-image"></i> העלה תמונה</label>
+                    <input type="file" id="imageUpload" accept="image/*">
+                </div>
+
+                <div class="control-group">
+                    <label><i class="fas fa-filter"></i> סוג מסנן</label>
+                    <select id="filterType">
+                        <option value="lowpass">Low-Pass (טשטוש)</option>
+                        <option value="highpass">High-Pass (זיהוי קצוות)</option>
+                        <option value="bandpass">Band-Pass (טבעת)</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label><i class="fas fa-circle"></i> גודל מסנן</label>
+                    <input type="range" id="filterSize" min="10" max="200" value="50">
+                    <span class="value-display" id="sizeDisplay">50</span>
+                </div>
+
+                <button class="btn-process" id="processBtn">
+                    <i class="fas fa-magic"></i>
+                    <span>עבד תמונה</span>
+                </button>
+
+                <div class="info-box">
+                    <h3>על המסנן</h3>
+                    <p id="filterInfo">בחר סוג מסנן לקבלת מידע</p>
+                </div>
+            </aside>
+
+            <main class="images-panel glass-card">
+                <h2><i class="fas fa-images"></i> תוצאות</h2>
+                <div class="images-grid">
+                    <div class="image-box">
+                        <h3>תמונה מקורית</h3>
+                        <canvas id="originalCanvas"></canvas>
+                    </div>
+                    <div class="image-box">
+                        <h3>ספקטרום פורייה</h3>
+                        <canvas id="spectrumCanvas"></canvas>
+                    </div>
+                    <div class="image-box">
+                        <h3>מסנן</h3>
+                        <canvas id="maskCanvas"></canvas>
+                    </div>
+                    <div class="image-box">
+                        <h3>תמונה מסוננת</h3>
+                        <canvas id="filteredCanvas"></canvas>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer class="footer">
+            <p>סימולטור אופטיקה פורייה | <strong>Fourier Optics Simulator</strong></p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/fft.js@4.0.4/lib/fft.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
