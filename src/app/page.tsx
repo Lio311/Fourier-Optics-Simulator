@@ -127,7 +127,7 @@ const drawMagnitude = (complex: Float32Array, width: number, height: number, dat
   for (let i = 0; i < width * height; i++) {
     const re = complex[i * 2];
     const im = complex[i * 2 + 1];
-    let val = Math.log(1 + Math.sqrt(re * re + im * im));
+    const val = Math.log(1 + Math.sqrt(re * re + im * im));
     mag[i] = val;
     if (val < min) min = val;
     if (val > max) max = val;
@@ -155,18 +155,6 @@ export default function FourierSimulator() {
   const [radius, setRadius] = useState<number>(30);
   const [isProcessing, setIsProcessing] = useState(false);
   const [originalGray, setOriginalGray] = useState<Float32Array | null>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".anim-header", { y: -30, opacity: 0, duration: 0.8, ease: "power3.out" });
-      gsap.from(".anim-card", { scale: 0.95, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power3.out", delay: 0.2 });
-    }, containerRef);
-    
-    // Default synthetic image
-    drawDefaultImage();
-
-    return () => ctx.revert();
-  }, []);
 
   const drawDefaultImage = () => {
     if (!originalCanvas.current) return;
@@ -196,6 +184,18 @@ export default function FourierSimulator() {
     const imgData = ctx.getImageData(0, 0, imageSize, imageSize);
     setOriginalGray(rgbaToGrayscale(imgData.data, imageSize, imageSize));
   };
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".anim-header", { y: -30, opacity: 0, duration: 0.8, ease: "power3.out" });
+      gsap.from(".anim-card", { scale: 0.95, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power3.out", delay: 0.2 });
+    }, containerRef);
+    
+    // Default synthetic image
+    drawDefaultImage();
+
+    return () => ctx.revert();
+  }, []);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
